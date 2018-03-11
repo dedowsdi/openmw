@@ -1,0 +1,26 @@
+{
+  "all": {
+    "exe_args": "",
+    "lldb": {
+      "breakpoint": {}
+    }
+  },
+  "openmw": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file esmreader.cpp --line 91": null,
+        "breakpoint set --file esmreader.cpp --line 79": 1,
+        "breakpoint set --file esmreader.cpp --line 74": 1,
+        "breakpoint set --file esmreader.cpp --line 64": 1
+      }
+    }
+  },
+  "esmtool": {
+    "exe_args": "",
+    "lldb": {
+      "breakpoint": {}
+    }
+  }
+}
