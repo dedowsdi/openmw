@@ -122,7 +122,7 @@ struct ESM_Context
   // When working with multiple esX files, we will generate lists of all files that
   //  actually contribute to a specific cell. Therefore, we need to store the index
   //  of the file belonging to this contest. See CellStore::(list/load)refs for details.
-  int index;
+  int index; // this is index of esm reader, iCtx is index of ESM_Context
 
   // True if subName has been read but not used.
   bool subCached;

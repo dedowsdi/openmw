@@ -535,7 +535,7 @@ namespace MWWorld
                 mCell->restore (esm[index], i);
 
                 ESM::CellRef ref;
-                ref.mRefNum.mContentFile = ESM::RefNum::RefNum_NoContentFile;
+                ref.mRefNum.mContentFile = ESM::RefNum::RefNum_NoContentFile;// @Ques
 
                 // Get each reference in turn
                 bool deleted = false;

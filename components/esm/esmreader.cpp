@@ -254,7 +254,7 @@ void ESMReader::getSubHeader()
     getT(mCtx.leftSub);
 
     // Adjust number of record bytes left
-    mCtx.leftRec -= mCtx.leftSub + 4;
+    mCtx.leftRec -= mCtx.leftSub + 4; // 4 is bytesize of sub header which is just size of sub
 }
 
 void ESMReader::getSubHeaderIs(int size)
@@ -289,7 +289,7 @@ void ESMReader::skipRecord()
 void ESMReader::getRecHeader(uint32_t &flags)
 {
     // General error checking
-    if (mCtx.leftFile < 12)
+    if (mCtx.leftFile < 12) // 4 rec size + 8 size of 0
         fail("End of file while reading record header");
     if (mCtx.leftRec)
         fail("Previous record contains unread bytes");
@@ -298,7 +298,7 @@ void ESMReader::getRecHeader(uint32_t &flags)
     getUint(flags);// This header entry is always zero
     getUint(flags);
     mCtx.leftFile -= 12;
-
+// @Ques 1st record starts at 0x00000010, next rcord starts at 0x00000010 + mCtx.leftRec ?
     // Check that sizes add up
     if (mCtx.leftFile < mCtx.leftRec)
         fail("Record size is larger than rest of file");

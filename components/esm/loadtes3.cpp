@@ -37,7 +37,7 @@ void ESM::Header::load (ESMReader &esm)
       esm.getT(mData.records);
     }
 
-    while (esm.isNextSub ("MAST"))
+    while (esm.isNextSub ("MAST"))// @Ques
     {
         MasterData m;
         m.name = esm.getHString();
@@ -45,18 +45,18 @@ void ESM::Header::load (ESMReader &esm)
         mMaster.push_back (m);
     }
 
-    if (esm.isNextSub("GMDT"))
+    if (esm.isNextSub("GMDT"))// @Ques
     {
         esm.getHT(mGameData);
     }
-    if (esm.isNextSub("SCRD"))
+    if (esm.isNextSub("SCRD"))// @Ques
     {
         esm.getSubHeader();
         mSCRD.resize(esm.getSubSize());
         if (!mSCRD.empty())
             esm.getExact(&mSCRD[0], mSCRD.size());
     }
-    if (esm.isNextSub("SCRS"))
+    if (esm.isNextSub("SCRS"))// @Ques
     {
         esm.getSubHeader();
         mSCRS.resize(esm.getSubSize());

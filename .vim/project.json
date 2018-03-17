@@ -2,18 +2,8 @@
   "all": {
     "exe_args": "",
     "lldb": {
-      "breakpoint": {}
-    }
-  },
-  "openmw": {
-    "exe_args": "",
-    "make_args": "-j 3",
-    "lldb": {
       "breakpoint": {
-        "breakpoint set --file esmreader.cpp --line 91": null,
-        "breakpoint set --file esmreader.cpp --line 79": 1,
-        "breakpoint set --file esmreader.cpp --line 74": 1,
-        "breakpoint set --file esmreader.cpp --line 64": 1
+        "breakpoint set --file cellref.cpp --line 49": null
       }
     }
   },
@@ -21,6 +11,29 @@
     "exe_args": "",
     "lldb": {
       "breakpoint": {}
+    }
+  },
+  "exp_esmreader": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file loadtes3.cpp --line 30": null
+      }
+    }
+  },
+  "openmw-cs": {
+    "make_args": " -j 3",
+    "lldb": {
+      "breakpoint": {}
+    }
+  },
+  "openmw": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file cellref.cpp --line 49": null
+      },
+      "manual": [
+        "# breakpoint set -F MWWorld::CellStore::insert"
+      ]
     }
   }
 }

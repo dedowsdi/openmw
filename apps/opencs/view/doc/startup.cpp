@@ -99,7 +99,7 @@ CSVDoc::StartupDialogue::StartupDialogue() : mWidth (0), mColumn (2)
 
     QVBoxLayout *layout = new QVBoxLayout (this);
 
-    layout->setContentsMargins (0, 0, 0, 0);
+    layout->setContentsMargins (0, 0, 0, 0); // why no margins ? so ugly
 
     layout->addWidget (createButtons());
     layout->addWidget (createTools());

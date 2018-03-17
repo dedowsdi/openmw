@@ -225,7 +225,7 @@ namespace ESM
 
         // NOTE: We should not need this check. It is a safety check until we have checked
         // more plugins, and how they treat these moved references.
-        if (esm.isNextSub("MVRF"))
+        if (esm.isNextSub("MVRF"))// @Ques
         {
             if (ignoreMoves)
             {
@@ -241,7 +241,7 @@ namespace ESM
             }
         }
 
-        if (esm.peekNextSub("FRMR"))
+        if (esm.peekNextSub("FRMR"))// @Ques
         {
             ref.load (esm, isDeleted);
 

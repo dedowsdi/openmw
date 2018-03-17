@@ -95,7 +95,7 @@ public:
 
   // Read data of a given type, stored in a subrecord of a given name
   template <typename X>
-  void getHNT(X &x, const char* name)
+  void getHNT(X &x, const char* name) //  sub_name header type, it should be getNHT
   {
     getSubNameIs(name);
     getHT(x);
@@ -103,7 +103,7 @@ public:
 
   // Optional version of getHNT
   template <typename X>
-  void getHNOT(X &x, const char* name)
+  void getHNOT(X &x, const char* name) // sub_name optinal header type, it should be getNOHT
   {
       if(isNextSub(name))
           getHT(x);
@@ -112,7 +112,7 @@ public:
   // Version with extra size checking, to make sure the compiler
   // doesn't mess up our struct padding.
   template <typename X>
-  void getHNT(X &x, const char* name, int size)
+  void getHNT(X &x, const char* name, int size) // getNHT
   {
       assert(sizeof(X) == size);
       getSubNameIs(name);
@@ -120,18 +120,18 @@ public:
   }
 
   template <typename X>
-  void getHNOT(X &x, const char* name, int size)
+  void getHNOT(X &x, const char* name, int size) // getNOHT
   {
       assert(sizeof(X) == size);
       if(isNextSub(name))
           getHT(x);
   }
 
-  int64_t getHNLong(const char *name);
+  int64_t getHNLong(const char *name); // getNHLong
 
   // Get data of a given type/size, including subrecord header
   template <typename X>
-  void getHT(X &x)
+  void getHT(X &x) // sub_header type
   {
       getSubHeader();
       if (mCtx.leftSub != sizeof(X))
@@ -153,7 +153,7 @@ public:
   }
 
   // Read a string by the given name if it is the next record.
-  std::string getHNOString(const char* name);
+  std::string getHNOString(const char* name); // getNOHString
 
   // Read a string with the given sub-record name
   std::string getHNString(const char* name);
@@ -245,7 +245,7 @@ public:
    *************************************************************************/
 
   template <typename X>
-  void getT(X &x) { getExact(&x, sizeof(X)); }
+  void getT(X &x) { getExact(&x, sizeof(X)); } // get type block
 
   void getExact(void*x, int size);
   void getName(NAME &name) { getT(name); }
