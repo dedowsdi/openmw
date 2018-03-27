@@ -12,6 +12,6 @@ ctags \
     --exclude=cmake \
     --exclude=CMake \
     --exclude=CMakeLists \
-    --exclude=doc \
+    --exclude=docs \
     --exclude=CI \
     --exclude=manual \

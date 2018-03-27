@@ -1,1 +1,7 @@
-
+call syntax#cpp()
+call syntax#osg()
+call syntax#mygui()
+call syntax#openmw()
+call syntax#qt()
+call syntax#boost_program_options()
+call syntax#boost_iostreams()

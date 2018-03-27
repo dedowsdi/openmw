@@ -104,7 +104,7 @@ std::pair<Files::PathContainer, std::vector<std::string> > CS::Editor::readConfi
     ("script-blacklist-use", boost::program_options::value<bool>()->implicit_value(true)
         ->default_value(true), "enable script blacklisting");
 
-    boost::program_options::notify(variables);
+    boost::program_options::notify(variables); //Ques are there something to notify?, why not use set default value 
 
     mCfgMgr.readConfiguration(variables, desc, quiet);
 
@@ -125,7 +125,7 @@ std::pair<Files::PathContainer, std::vector<std::string> > CS::Editor::readConfi
     if (!variables["data"].empty()) {
         dataDirs = Files::PathContainer(Files::EscapePath::toPathContainer(variables["data"].as<Files::EscapePathContainer>()));
     }
-
+// @Ques what does data-local do?
     std::string local = variables["data-local"].as<Files::EscapeHashString>().toStdString();
     if (!local.empty())
     {

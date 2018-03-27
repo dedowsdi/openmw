@@ -21,7 +21,7 @@ struct ConfigurationManager
 {
     ConfigurationManager(bool silent=false); /// @param silent Emit log messages to cout?
     virtual ~ConfigurationManager();
-
+    // read openmw.cfg
     void readConfiguration(boost::program_options::variables_map& variables,
         boost::program_options::options_description& description, bool quiet=false);
 

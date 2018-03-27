@@ -22,7 +22,7 @@ namespace ContentSelectorView
 namespace CSVDoc
 {
     class FileWidget;
-
+    // esm file dialog
     class FileDialog : public QDialog
     {
         Q_OBJECT

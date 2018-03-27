@@ -21,9 +21,10 @@
     }
   },
   "openmw-cs": {
-    "make_args": " -j 3",
     "lldb": {
-      "breakpoint": {}
+      "breakpoint": {
+        "breakpoint set --file subviewfactory.cpp --line 31": null
+      }
     }
   },
   "openmw": {
@@ -34,6 +35,19 @@
       "manual": [
         "# breakpoint set -F MWWorld::CellStore::insert"
       ]
+    }
+  },
+  "exp_files": {
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
+    }
+  },
+  "__default__": {
+    "make_args": "-j 3",
+    "lldb": {
+      "breakpoint": {},
+      "manual": []
     }
   }
 }

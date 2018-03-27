@@ -124,7 +124,7 @@ namespace Files
             eSV->mVector.push_back(EscapeHashString(*it));
     }
 
-    PathContainer EscapePath::toPathContainer(const EscapePathContainer & escapePathContainer)
+    PathContainer EscapePath::toPathContainer(const EscapePathContainer & escapePathContainer)// @Ques what does this function do ?
     {
         PathContainer temp;
         for (EscapePathContainer::const_iterator it = escapePathContainer.begin(); it != escapePathContainer.end(); ++it)

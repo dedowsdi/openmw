@@ -16,6 +16,9 @@ namespace Files
 {
     /**
     * \struct escape_hash_filter
+    * search # and @ in non comment line
+    *   replace # with @a
+    *   replace @ with @h
     */
     struct escape_hash_filter : public boost::iostreams::input_filter
     {
@@ -51,7 +54,7 @@ namespace Files
                 mFinishLine = false;
                 mNext.push(character);
             }
-            else if (character == '\n')
+            else if (character == '\n') // start new line
             {
                 mSeenNonWhitespace = false;
                 mFinishLine = false;
@@ -137,6 +140,8 @@ namespace Files
 
     /**
     * \class EscapeHashString
+    * replace @h with #
+    * replace @a with @
     */
     class EscapeHashString
     {
@@ -177,7 +182,7 @@ namespace Files
 
     void validate(boost::any &v, const std::vector<std::string> &tokens, EscapeStringVector *, int);
 
-    struct EscapePath
+    struct EscapePath// @Ques
     {
         boost::filesystem::path mPath;
 

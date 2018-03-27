@@ -13,7 +13,7 @@ CSMDoc::Loader::Stage::Stage() : mFile (0), mRecordsLoaded (0), mRecordsLeft (fa
 CSMDoc::Loader::Loader()
     : mShouldStop(false)
 {
-    mTimer = new QTimer (this);
+    mTimer = new QTimer (this);// @Ques why not use signal slot?
 
     connect (mTimer, SIGNAL (timeout()), this, SLOT (load()));
     mTimer->start();
