@@ -32,7 +32,7 @@ namespace CSMWorld
         {
             Flag_Table = 1, // column should be displayed in table view
             Flag_Dialogue = 2, // column should be displayed in dialogue view
-            Flag_Dialogue_List = 4, // column should be diaplyed in dialogue view
+            Flag_Dialogue_List = 4, // column should be diaplyed in dialogue view// @Ques what's the difference between flag_dialogue_list and flag_dialogue
             Flag_Dialogue_Refresh = 8 // refresh dialogue view if this column is modified
         };
 

@@ -23,7 +23,7 @@
   "openmw-cs": {
     "lldb": {
       "breakpoint": {
-        "breakpoint set --file subviewfactory.cpp --line 31": null
+        "breakpoint set --file subviewfactoryimp.hpp --line 47": null
       }
     }
   },

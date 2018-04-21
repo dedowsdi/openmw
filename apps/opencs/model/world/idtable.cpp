@@ -22,7 +22,7 @@ CSMWorld::IdTable::~IdTable()
 
 int CSMWorld::IdTable::rowCount (const QModelIndex & parent) const
 {
-    if (parent.isValid())
+    if (parent.isValid()) // return 0 for table based model
         return 0;
 
     return mIdCollection->getSize();

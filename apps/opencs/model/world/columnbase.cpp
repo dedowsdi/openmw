@@ -124,8 +124,7 @@ const CSMWorld::ColumnBase& CSMWorld::NestableColumn::nestedColumn(int subColumn
     return *mNestedColumns.at(subColumn);
 }
 
-CSMWorld::NestableColumn::NestableColumn(int columnId, CSMWorld::ColumnBase::Display displayType,
-    int flag)
+CSMWorld::NestableColumn::NestableColumn(int columnId, Display displayType, int flag)
     : CSMWorld::ColumnBase(columnId, displayType, flag)
 {}
 

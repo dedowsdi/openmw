@@ -8,6 +8,7 @@ namespace CSVDoc
 
 namespace CSVWorld
 {
+    // populate manager with factories
     void addSubViewFactories (CSVDoc::SubViewFactoryManager& manager);
 }
 
