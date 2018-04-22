@@ -63,7 +63,7 @@ namespace CSMWorld
             { ColumnId_AutoCalc, "Auto Calc" },
             { ColumnId_StarterSpell, "Starter Spell" },
             { ColumnId_AlwaysSucceeds, "Always Succeeds" },
-            { ColumnId_SleepForbidden, "Sleep Forbidden" },
+            { ColumnId_SleepForbidden, "sleep forbidden" },
             { ColumnId_InteriorWater, "Interior Water" },
             { ColumnId_InteriorSky, "Interior Sky" },
             { ColumnId_Model, "Model" },
