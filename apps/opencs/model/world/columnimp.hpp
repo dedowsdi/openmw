@@ -881,6 +881,29 @@ namespace CSMWorld
     };
 
     template<typename ESXRecordT>
+    struct FooColumn : public Column<ESXRecordT>
+    {
+        FooColumn() 
+        : Column<ESXRecordT> (Columns::ColumnId_Foo, ColumnBase::Display_Integer, ColumnBase::Flag_Table) {}
+
+        virtual QVariant get (const Record<ESXRecordT>& record) const
+        {
+            static int i = 0;
+            return i++;
+        }
+
+        virtual void set (Record<ESXRecordT>& record, const QVariant& data)
+        {
+            //ESXRecordT record2 = record.get();
+        }
+
+        virtual bool isEditable() const
+        {
+            return false;
+        }
+    };
+
+    template<typename ESXRecordT>
     struct CellColumn : public Column<ESXRecordT>
     {
         bool mBlocked;
