@@ -734,7 +734,7 @@ const CSMWorld::ColumnBase& CSMWorld::RefIdCollection::getColumn (int column) co
 {
     return mColumns.at (column);
 }
-
+ 
 QVariant CSMWorld::RefIdCollection::getData (int index, int column) const
 {
     RefIdData::LocalIndex localIndex = mData.globalToLocalIndex (index);

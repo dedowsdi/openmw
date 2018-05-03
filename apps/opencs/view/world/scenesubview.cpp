@@ -31,7 +31,7 @@ CSVWorld::SceneSubView::SceneSubView (const CSMWorld::UniversalId& id, CSMDoc::D
 {
     QVBoxLayout *layout = new QVBoxLayout;
 
-    layout->addWidget (mBottom = new TableBottomBox (NullCreatorFactory(), document, id, this), 0);
+    layout->addWidget (mBottom = new TableBottomBox (NullCreatorFactory(), document, id, this), 0);// @Ques does scene sub view need this?
 
     mLayout->setContentsMargins (QMargins (0, 0, 0, 0));
 

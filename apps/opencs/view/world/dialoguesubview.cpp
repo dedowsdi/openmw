@@ -248,7 +248,7 @@ QWidget* CSVWorld::DialogueDelegateDispatcher::makeEditor(CSMWorld::ColumnBase::
     QVariant variant = index.data();
     if (!variant.isValid())
     {
-        variant = index.data(Qt::DisplayRole);
+        variant = index.data(Qt::DisplayRole);// @Ques what's the point of try again?
         if (!variant.isValid())
         {
             return NULL;
@@ -539,8 +539,8 @@ void CSVWorld::EditWidget::remake(int row)
     mainLayout->addLayout(tablesLayout, QSizePolicy::Preferred);
     mainLayout->addStretch(1);
 
-    int unlocked = 0;
-    int locked = 0;
+    int unlocked = 0; // row index of unlocked layout
+    int locked = 0; // row index of locked layout
     const int columns = mTable->columnCount();
 
     for (int i=0; i<columns; ++i)
@@ -631,7 +631,7 @@ void CSVWorld::EditWidget::remake(int row)
                         ++unlocked;
                     }
 
-                    if(mTable->index(row, i).data().type() == QVariant::UserType)
+                    if(mTable->index(row, i).data().type() == QVariant::UserType) // @Ques why should user type be disabled?
                     {
                         editor->setEnabled(false);
                         label->setEnabled(false);
@@ -929,7 +929,7 @@ void CSVWorld::DialogueSubView::viewRecord ()
     QModelIndex currentIndex (getTable().getModelIndex (getUniversalId().getId(), idColumn));
 
     if (currentIndex.isValid() &&
-        currentIndex.row() < getTable().rowCount())
+        currentIndex.row() < getTable().rowCount())// @Ques why check row count?
     {
         std::pair<CSMWorld::UniversalId, std::string> params = getTable().view (currentIndex.row());
 

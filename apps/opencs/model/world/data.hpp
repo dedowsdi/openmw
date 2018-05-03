@@ -134,7 +134,7 @@ namespace CSMWorld
             // not implemented
             Data (const Data&);
             Data& operator= (const Data&);
-
+            // register both type and it's parent type
             void addModel (QAbstractItemModel *model, UniversalId::Type type,
                 bool update = true);
 

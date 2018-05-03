@@ -220,7 +220,7 @@ namespace CSMWorld
     {
         public:
 
-            typedef std::pair<int, UniversalId::Type> LocalIndex;
+            typedef std::pair<int, UniversalId::Type> LocalIndex; // index in specific type record container
 
         private:
 
@@ -244,7 +244,7 @@ namespace CSMWorld
             RefIdDataContainer<ESM::Repair> mRepairs;
             RefIdDataContainer<ESM::Static> mStatics;
             RefIdDataContainer<ESM::Weapon> mWeapons;
-
+            // @Ques does record have unique id even among different types?
             std::map<std::string, LocalIndex> mIndex;
 
             std::map<UniversalId::Type, RefIdDataContainerBase *> mRecordContainers;

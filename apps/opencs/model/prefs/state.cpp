@@ -378,7 +378,7 @@ CSMPrefs::IntSetting& CSMPrefs::State::declareInt (const std::string& key,
     stream << default_;
     setDefault (key, stream.str());
 
-    default_ = mSettings.getInt (key, mCurrentCategory->second.getKey());
+    default_ = mSettings.getInt (key, mCurrentCategory->second.getKey());// @Ques why retrieve it from map?
 
     CSMPrefs::IntSetting *setting =
         new CSMPrefs::IntSetting (&mCurrentCategory->second, &mSettings, &mMutex, key, label,

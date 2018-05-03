@@ -66,7 +66,7 @@ namespace CSMWorld
                 Type_Cells,
                 Type_Cell,
                 Type_Cell_Missing, //For cells that does not exist yet.
-                Type_Referenceables,
+                Type_Referenceables, // objects
                 Type_Referenceable,
                 Type_Activator,
                 Type_Potion,
@@ -88,7 +88,7 @@ namespace CSMWorld
                 Type_Repair,
                 Type_Static,
                 Type_Weapon,
-                Type_References,
+                Type_References, // instances
                 Type_Reference,
                 Type_RegionMap,
                 Type_Filters,

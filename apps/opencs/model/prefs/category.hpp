@@ -13,7 +13,7 @@ namespace CSMPrefs
     {
         public:
 
-            typedef std::vector<Setting *> Container;
+            typedef std::vector<Setting *> Container;// @Ques why not use map?
             typedef Container::iterator Iterator;
 
         private:

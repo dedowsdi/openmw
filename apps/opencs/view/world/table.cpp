@@ -23,7 +23,7 @@
 
 #include "../../model/prefs/state.hpp"
 #include "../../model/prefs/shortcut.hpp"
-
+ 
 #include "tableeditidaction.hpp"
 #include "util.hpp"
 

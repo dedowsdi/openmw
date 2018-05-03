@@ -91,7 +91,7 @@ bool CSVRender::Cell::addObjects (int start, int end)
 
             std::unique_ptr<Object> object (new Object (mData, mCellNode, id, false));
 
-            if (mSubModeElementMask & Mask_Reference)
+            if (mSubModeElementMask & Mask_Reference)// @Ques what's sub mode ?
                 object->setSubMode (mSubMode);
 
             mObjects.insert (std::make_pair (id, object.release()));

@@ -84,7 +84,7 @@ namespace CSMWorld
         private:
 
             std::vector<Record<ESXRecordT> > mRecords;
-            std::map<std::string, int> mIndex;
+            std::map<std::string, int> mIndex;  // <id,row>
             std::vector<Column<ESXRecordT> *> mColumns;
 
             // not implemented

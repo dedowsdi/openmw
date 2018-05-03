@@ -108,7 +108,8 @@ bool CSMWorld::IdTableProxyModel::lessThan(const QModelIndex &left, const QModel
         std::string second = getEnumValue(valuesIt->second, right.data().toInt());
         return first < second;
     }
-    return QSortFilterProxyModel::lessThan(left, right);
+    return QSortFilterProxyModel::lessThan(left, right); // sort by id by default
+    //return true; // refiddata get data type by type in sequence of UniversalId::Type
 }
 
 QString CSMWorld::IdTableProxyModel::getRecordId(int sourceRow) const
