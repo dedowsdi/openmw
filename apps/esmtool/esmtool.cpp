@@ -28,6 +28,7 @@ struct ESMData
     std::vector<ESM::Header::MasterData> masters;
 
     std::deque<EsmTool::RecordBase *> mRecords;
+    std::map<std::string, EsmTool::RecordBase*> mRefs;
     // Value: (Reference, Deleted flag)
     std::map<ESM::Cell *, std::deque<std::pair<ESM::CellRef, bool> > > mCellRefs;
     std::map<int, int> mRecordStats;
@@ -55,6 +56,8 @@ struct Arguments
     bool quiet_given;
     bool loadcells_given;
     bool plain_given;
+    bool idonly_given;
+    bool pure_given;
 
     std::string mode;
     std::string encoding;
@@ -62,6 +65,7 @@ struct Arguments
     std::string outname;
 
     std::vector<std::string> types;
+    std::vector<std::string> cellRefTypes;
     std::string name;
 
     ESMData data;
@@ -96,6 +100,9 @@ bool parseOptions (int argc, char** argv, Arguments &info)
           "\n\twin1250 - Central and Eastern European such as Polish, Czech, Slovak, Hungarian, Slovene, Bosnian, Croatian, Serbian (Latin script), Romanian and Albanian languages\n"
           "\n\twin1251 - Cyrillic alphabet such as Russian, Bulgarian, Serbian Cyrillic and other languages\n"
           "\n\twin1252 - Western European (Latin) alphabet, used by default")
+        ("idonly", "print record name only")
+        ("pure", "no crap")
+        ("cellreftypes", bpo::value<std::vector<std::string>>(&info.cellRefTypes)->multitoken())
         ;
 
     std::string finalText = "\nIf no option is given, the default action is to parse all records in the archive\nand display diagnostic information.";
@@ -189,6 +196,8 @@ bool parseOptions (int argc, char** argv, Arguments &info)
     info.quiet_given = variables.count ("quiet") != 0;
     info.loadcells_given = variables.count ("loadcells") != 0;
     info.plain_given = variables.count("plain") != 0;
+    info.idonly_given = variables.count("idonly") != 0;
+    info.pure_given = variables.count("pure") != 0;
 
     // Font encoding settings
     info.encoding = variables["encoding"].as<std::string>();
@@ -197,7 +206,9 @@ bool parseOptions (int argc, char** argv, Arguments &info)
         std::cout << info.encoding << " is not a valid encoding option." << std::endl;
         info.encoding = "win1252";
     }
-    std::cout << ToUTF8::encodingUsingMessage(info.encoding) << std::endl;
+
+    if(!info.pure_given)
+        std::cout << ToUTF8::encodingUsingMessage(info.encoding) << std::endl;
 
     return true;
 }
@@ -251,7 +262,7 @@ void loadCell(ESM::Cell &cell, ESM::ESMReader &esm, Arguments& info)
 
     // Loop through all the references
     ESM::CellRef ref;
-    if(!quiet) std::cout << "  References:\n";
+    if(!quiet && !info.pure_given) std::cout << "  References:\n";
 
     bool deleted = false;
     while(cell.getNextRef(esm, ref, deleted))
@@ -261,6 +272,24 @@ void loadCell(ESM::Cell &cell, ESM::ESMReader &esm, Arguments& info)
         }
 
         if(quiet) continue;
+
+        if (!info.cellRefTypes.empty()) {
+            auto iter = info.data.mRefs.find(ref.mRefID);
+            if (iter == info.data.mRefs.end()) {
+                std::cout << "'" << ref.mRefID << "' not found" << std::endl;
+            } else{
+                EsmTool::RecordBase* refRecord = iter->second;
+                if (std::find(info.cellRefTypes.begin(), info.cellRefTypes.end(), 
+                            refRecord->getType().toString()) == info.cellRefTypes.end()) {
+                   continue;
+                }
+            }
+        }
+
+        if (info.idonly_given) {
+            std::cout << ref.mRefID << std::endl;
+            continue;
+        }
 
         std::cout << "    Refnum: " << ref.mRefNum.mIndex << std::endl;
         std::cout << "    ID: '" << ref.mRefID << "'\n";
@@ -306,15 +335,20 @@ int load(Arguments& info)
     esm.setEncoder(&encoder);
 
     std::string filename = info.filename;
-    std::cout << "Loading file: " << filename << std::endl;
+
+    if(!info.pure_given)
+        std::cout << "Loading file: " << filename << std::endl;
 
     std::list<int> skipped;
+
+    std::vector<ESM::Cell*> postedCells;
 
     try {
 
         if(info.raw_given && info.mode == "dump")
         {
-            std::cout << "RAW file listing:\n";
+            if (!info.pure_given) 
+                std::cout << "RAW file listing:\n";
 
             esm.openRaw(filename);
 
@@ -333,7 +367,7 @@ int load(Arguments& info)
         info.data.description = esm.getDesc();
         info.data.masters = esm.getGameFiles();
 
-        if (!quiet)
+        if (!quiet && !info.pure_given)
         {
             std::cout << "Author: " << esm.getAuthor() << std::endl
                  << "Description: " << esm.getDesc() << std::endl
@@ -388,26 +422,53 @@ int load(Arguments& info)
 
             if(!quiet && interested)
             {
-                std::cout << "\nRecord: " << n.toString() << " '" << record->getId() << "'\n";
-                record->print();
+                if (!info.idonly_given) {
+                    std::cout << "\nRecord: " << n.toString()<< " '" << record->getId() << "'\n";
+                    record->print();
+                }else{
+                    std::cout << record->getId() << std::endl;
+                }
             }
 
-            if (record->getType().intval == ESM::REC_CELL && loadCells && interested)
+            if (record->getType() == ESM::REC_CELL && loadCells && interested)
             {
-                loadCell(record->cast<ESM::Cell>()->get(), esm, info);
+                //loadCell(record->cast<ESM::Cell>()->get(), esm, info);
+                postedCells.push_back(&record->cast<ESM::Cell>()->get());
+            }
+
+            if (record->referenceable()) {
+                const std::string& id = record->getId();
+                if (info.data.mRefs.find(id)!= info.data.mRefs.end()) {
+                    std::cout << "find duplicated id : " << record->getType().toString() 
+                              << " : " <<  record->getId() << std::endl;
+                }
+                info.data.mRefs.insert(std::make_pair(record->getId(), record));
             }
 
             if (save)
             {
                 info.data.mRecords.push_back(record);
             }
-            else
-            {
+            else if(!record->referenceable() && record->getType() != ESM::REC_CELL){
                 delete record;
             }
+            //else
+            //{
+                //delete record;
+            //}
             ++info.data.mRecordStats[n.intval];
         }
 
+        for (size_t i = 0; i < postedCells.size(); ++i) {
+            ESM::Cell* cell = postedCells[i];
+            //std::cout << cell->mName << std::endl;  // the same as getId()
+            loadCell(*cell, esm, info);
+        }
+
+        // clean up
+        for(auto iter = info.data.mRefs.begin(); iter != info.data.mRefs.end(); ++iter){
+            delete iter->second;
+        }
     } catch(std::exception &e) {
         std::cout << "\nERROR:\n\n  " << e.what() << std::endl;
 

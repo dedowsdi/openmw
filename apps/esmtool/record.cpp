@@ -399,6 +399,32 @@ RecordBase::create(ESM::NAME type)
     return record;
 }
 
+//--------------------------------------------------------------------
+bool RecordBase::referenceable() const
+{
+    return 
+        mType == ESM::REC_BOOK ||
+        mType == ESM::REC_ACTI ||
+        mType == ESM::REC_ALCH ||
+        mType == ESM::REC_APPA ||
+        mType == ESM::REC_ARMO ||
+        mType == ESM::REC_CLOT ||
+        mType == ESM::REC_CONT ||
+        mType == ESM::REC_CREA ||
+        mType == ESM::REC_DOOR ||
+        mType == ESM::REC_INGR ||
+        mType == ESM::REC_LEVC ||
+        mType == ESM::REC_LIGH ||
+        mType == ESM::REC_LOCK ||
+        mType == ESM::REC_MISC ||
+        mType == ESM::REC_NPC_ ||
+        mType == ESM::REC_WEAP ||
+        mType == ESM::REC_PROB ||
+        mType == ESM::REC_REPA ||
+        mType == ESM::REC_STAT
+    ;
+}
+
 template<>
 void Record<ESM::Activator>::print()
 {
@@ -1348,7 +1374,7 @@ void Record<ESM::Weapon>::print()
 template<> 
 std::string Record<ESM::Cell>::getId() const
 {
-    return mData.mName;
+    return mData.mName; // why not just return blank
 }
 
 template<> 

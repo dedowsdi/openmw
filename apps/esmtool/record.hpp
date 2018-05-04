@@ -61,6 +61,8 @@ namespace EsmTool
         Record<T> *cast() {
             return static_cast<Record<T> *>(this);
         }
+
+        bool referenceable() const;
     };
 
     template <class T>

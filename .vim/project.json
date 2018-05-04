@@ -8,9 +8,11 @@
     }
   },
   "esmtool": {
-    "exe_args": "",
+    "exe_args": "dump ../../../data/Morrowind.esm --idonly --noheader --cellreftypes NPC_ -Cn \"Seyda Neen, Arrille's Tradehouse\"",
     "lldb": {
-      "breakpoint": {}
+      "breakpoint": {
+        "breakpoint set --file esmtool.cpp --line 440": null
+      }
     }
   },
   "exp_esmreader": {
