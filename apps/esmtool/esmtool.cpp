@@ -31,7 +31,7 @@ struct ESMData
     std::map<std::string, EsmTool::RecordBase*> mRefs;
     // Value: (Reference, Deleted flag)
     std::map<ESM::Cell *, std::deque<std::pair<ESM::CellRef, bool> > > mCellRefs;
-    std::map<int, int> mRecordStats;
+    std::map<int, int> mRecordStats; // type:count
 
     static const std::set<int> sLabeledRec;
 };
@@ -179,6 +179,7 @@ bool parseOptions (int argc, char** argv, Arguments &info)
         std::cout << desc << finalText << std::endl;
         return false;
     }
+
 
     // handling gracefully the user adding multiple files
 /*    if (variables["input-file"].as< std::vector<std::string> >().size() > 1)
@@ -430,33 +431,27 @@ int load(Arguments& info)
                 }
             }
 
+            ++info.data.mRecordStats[n.intval];
+            if (save)
+            {
+                info.data.mRecords.push_back(record);
+                continue;
+            }
+
             if (record->getType() == ESM::REC_CELL && loadCells && interested)
             {
                 //loadCell(record->cast<ESM::Cell>()->get(), esm, info);
                 postedCells.push_back(&record->cast<ESM::Cell>()->get());
-            }
-
-            if (record->referenceable()) {
+            }else if (record->referenceable()) {
                 const std::string& id = record->getId();
                 if (info.data.mRefs.find(id)!= info.data.mRefs.end()) {
                     std::cout << "find duplicated id : " << record->getType().toString() 
                               << " : " <<  record->getId() << std::endl;
                 }
                 info.data.mRefs.insert(std::make_pair(record->getId(), record));
-            }
-
-            if (save)
-            {
-                info.data.mRecords.push_back(record);
-            }
-            else if(!record->referenceable() && record->getType() != ESM::REC_CELL){
+            }else{
                 delete record;
             }
-            //else
-            //{
-                //delete record;
-            //}
-            ++info.data.mRecordStats[n.intval];
         }
 
         for (size_t i = 0; i < postedCells.size(); ++i) {
@@ -466,9 +461,13 @@ int load(Arguments& info)
         }
 
         // clean up
+        for(auto iter = postedCells.begin(); iter != postedCells.end(); ++iter){
+            delete *iter;
+        }
         for(auto iter = info.data.mRefs.begin(); iter != info.data.mRefs.end(); ++iter){
             delete iter->second;
         }
+
     } catch(std::exception &e) {
         std::cout << "\nERROR:\n\n  " << e.what() << std::endl;
 
