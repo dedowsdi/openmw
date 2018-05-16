@@ -1,5 +1,5 @@
 call myvim#switchRtp('./.vim')
-let g:mycppBuildDir = "./build/clang/Debug/"
+let g:mycppBuildDir = "./build/clang/RelWithDebInfo/"
 
 au BufNewFile,BufRead * 
       \ if &ft == '' && match(expand('%:p'), 'OpenSceneGraph/include\|include/osg') != -1   | set ft=cpp | endif

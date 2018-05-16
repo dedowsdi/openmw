@@ -49,5 +49,14 @@
       "breakpoint": {},
       "manual": []
     }
+  },
+  "mission7": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file main.cpp --line 12": null
+      },
+      "manual": []
+    },
+    "exe_args": "../../../data/Morrowind.bsa  'meshes/m/text_quarto_02.nif'"
   }
 }

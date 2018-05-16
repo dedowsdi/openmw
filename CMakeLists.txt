@@ -12,6 +12,7 @@ option(BUILD_UNITTESTS "Enable Unittests with Google C++ Unittest" OFF)
 option(BUILD_NIFTEST "build nif file tester" OFF)
 option(BUILD_MYGUI_PLUGIN "build MyGUI plugin for OpenMW resources, to use with MyGUI tools" ON)
 option(BUILD_DOCS        "build documentation." OFF )
+option(BUILD_MISSION7 "build mission 7" ON)
 
 if (NOT BUILD_LAUNCHER AND NOT BUILD_OPENCS AND NOT BUILD_WIZARD)
    set(USE_QT FALSE)
@@ -594,6 +595,10 @@ endif(BUILD_NIFTEST)
 # UnitTests
 if (BUILD_UNITTESTS)
   add_subdirectory( apps/openmw_test_suite )
+endif()
+
+if (BUILD_MISSION7)
+  add_subdirectory( apps/mission7 )
 endif()
 
 if (WIN32)
