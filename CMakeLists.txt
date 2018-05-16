@@ -2,6 +2,7 @@
 option(BUILD_OPENMW "build OpenMW" ON)
 option(BUILD_BSATOOL "build BSA extractor" ON)
 option(BUILD_ESMTOOL "build ESM inspector" ON)
+option(BUILD_BT "build bsa inspector" ON)
 option(BUILD_LAUNCHER "build Launcher" ON)
 option(BUILD_MWINIIMPORTER "build MWiniImporter" ON)
 option(BUILD_ESSIMPORTER "build ESS (Morrowind save game) importer" ON)
@@ -590,6 +591,10 @@ endif()
 if (BUILD_NIFTEST)
     add_subdirectory(apps/niftest)
 endif(BUILD_NIFTEST)
+
+if (BUILD_BT)
+    add_subdirectory(apps/bt)
+endif(BUILD_BT)
 
 # UnitTests
 if (BUILD_UNITTESTS)

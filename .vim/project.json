@@ -49,5 +49,14 @@
       "breakpoint": {},
       "manual": []
     }
+  },
+  "bt": {
+    "lldb": {
+      "breakpoint": {
+        "breakpoint set --file command.cpp --line 73": null
+      },
+      "manual": []
+    },
+    "exe_args": "--name 'textures\\vfx_lightningrod04.dds'"
   }
 }
