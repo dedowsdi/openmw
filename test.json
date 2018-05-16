@@ -55,10 +55,10 @@
   "et": {
     "lldb": {
       "breakpoint": {
-        "breakpoint set --file textnumber.cpp --line 61": null
+        "breakpoint set --file command.cpp --line 232": null
       },
       "manual": []
     },
-    "exe_args": "--include-property minattack1 --property-value 5:"
+    "exe_args": "--include-model 'c\\Artifact_ring_soul_01.NIF'"
   }
 }

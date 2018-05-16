@@ -2,6 +2,7 @@
 #define OPENMW_ESM_MGEF_H
 
 #include <string>
+
 #include <map>
 
 namespace ESM
