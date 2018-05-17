@@ -35,6 +35,17 @@ int main(int argc, char *argv[])
     bpo::store(bpo::command_line_parser(argc, argv).options(desc).positional(pod).run(), vm);
     bpo::notify(vm);
 
+    if (arg.file.empty()) {
+        char* c = std::getenv("BSA_DATA");
+        if (c)
+            arg.file = c;
+    }
+
+    if (arg.file.empty()) {
+        std::cerr << "you need to specifile --file or $BSA_DATA" << std::endl;
+        return 0;
+    }
+
     bool strict = false;
 
     VFS::BsaArchive* bsaArchive = new VFS::BsaArchive(arg.file);
