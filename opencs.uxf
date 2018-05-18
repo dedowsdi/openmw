@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -66,8 +67,8 @@ signal: void focusId(universalId, hint)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>931</x>
-      <y>252</y>
+      <x>903</x>
+      <y>245</y>
       <w>77</w>
       <h>21</h>
     </coordinates>
@@ -79,11 +80,11 @@ signal: void focusId(universalId, hint)</panel_attributes>
     <coordinates>
       <x>791</x>
       <y>203</y>
-      <w>189</w>
-      <h>63</h>
+      <w>161</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;250.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;210.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -111,7 +112,7 @@ signal: void focusId(universalId, hint)</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>903</x>
-      <y>315</y>
+      <y>308</y>
       <w>119</w>
       <h>42</h>
     </coordinates>
@@ -136,12 +137,12 @@ slot : previewRecord()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>973</x>
-      <y>350</y>
+      <y>343</y>
       <w>21</w>
-      <h>49</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -193,23 +194,23 @@ getTableModel(id)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>812</x>
-      <y>322</y>
+      <y>315</y>
       <w>105</w>
-      <h>21</h>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>130.0;10.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>959</x>
-      <y>266</y>
-      <w>21</w>
+      <x>931</x>
+      <y>259</y>
+      <w>49</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;50.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -1493,8 +1494,8 @@ setId(record, id)/</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1078</x>
-      <y>378</y>
+      <x>1113</x>
+      <y>399</y>
       <w>112</w>
       <h>21</h>
     </coordinates>
@@ -1506,11 +1507,11 @@ setId(record, id)/</panel_attributes>
     <coordinates>
       <x>1127</x>
       <y>336</y>
-      <w>21</w>
-      <h>56</h>
+      <w>56</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -1565,11 +1566,11 @@ create</panel_attributes>
       <x>1015</x>
       <y>315</y>
       <w>70</w>
-      <h>35</h>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 delegate</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;30.0</additional_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -1689,5 +1690,111 @@ mOriginalCell
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1204</x>
+      <y>434</y>
+      <w>245</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>CommandDispatcher
+--
+executeModify(model,modelIndex,newData)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1162</x>
+      <y>336</y>
+      <w>119</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1036</x>
+      <y>245</y>
+      <w>112</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>FilterBox</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>973</x>
+      <y>245</y>
+      <w>77</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1218</x>
+      <y>539</y>
+      <w>112</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>IdTableProxyModel
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1015</x>
+      <y>343</y>
+      <w>259</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;350.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1204</x>
+      <y>616</y>
+      <w>112</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>CSMFilter::Node
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1253</x>
+      <y>574</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1106</x>
+      <y>707</y>
+      <w>168</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>CSMFilter::Parser
+--
+parse(str, allowPredefined)
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
